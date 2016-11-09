@@ -1,0 +1,26 @@
+div.myButton input {
+    background:url(https://www.tkaninowy.pl/environment/cache/images/0_0_productGfx_b71eda037722f3815ff44b646642b632.jpg) no-repeat;
+    cursor:pointer;
+    width: 200px;
+    height: 100px;
+    border: none;
+}
+div.Ryzowy input {
+    background:url(https://goo.gl/WD6twc) no-repeat;
+    background-size: cover;
+    cursor:pointer;
+    width: 500px;
+    height: 300px;
+    max-height: 100%;
+    max-width: 100%;
+    border: none;
+    color: cornsilk;
+    font-family: "Lucida Grande", Geneva, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 100px;
+    font-weight: bold;
+}
+
+.square {
+    height: 400px;
+    width: 400px;
+}

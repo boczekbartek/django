@@ -39,6 +39,10 @@ class Dish(models.Model):
     orderTime = models.DateTimeField(auto_now=True)
     deliveryTime = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return "Pasta:" + self.pasta + "Sos" + self.sauce
+
+
 class Delivery(models.Model):
     f_delivery_time = models.DecimalField(max_digits=4, decimal_places=2, default=10.00)
     l_delivery_time = models.DecimalField(max_digits=4, decimal_places=2, default=18.00)

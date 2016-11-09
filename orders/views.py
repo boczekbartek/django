@@ -17,6 +17,10 @@ from math import floor
 import math
 from datetime import datetime
 
+class Danie:
+    def __init__(self,pastaa):
+        self.makaron = pastaa
+
 
 def AfterComa(fl):
     return fl - floor(fl)
@@ -54,13 +58,15 @@ def isTimeValid(timee,latency = 30):
 
 
 
+
+
 def pasta (request):
 
-    #dish = Dish(sauce=choosed_sauce)
-    #dish.save();
+    sauce=request.POST['choosed_sauce']
+
     all_pastas = Pasta.objects.all()
 
-    return render (request,('orders/pasta.html'), {'all_pastas':all_pastas})
+    return render (request,('orders/pasta.html'), {'all_pastas':all_pastas, 'sauce': sauce})
 
 
 
@@ -69,12 +75,16 @@ def sauce(request):
     return render(request, 'orders/sauce.html', {'all_sauces': all_sauces})
 
 def ingredients(request):
+
+    sauce=request.POST['choosed_sauce']
+    pasta=request.POST['choosed_pasta']
+
     all_ingredients = Additional_Ingredient.objects.all()
-    return render(request, 'orders/ingredients.html', {'all_ingredients': all_ingredients})
+    return render(request, 'orders/ingredients.html', {'all_ingredients': all_ingredients, 'sauce': sauce, 'pasta': pasta})
 
 def add_ingredients(request):
     #tu ma byc zrobione dodawanie skladnikow do disha
-    times = generate_timetable(10.00, 20.00, 3)
+    times = generate_timetable(10.00, 23.00, 3)
     stra = ""
     strb = ""
     y = [s for s in times if isTimeValid(s)]
@@ -98,5 +108,9 @@ def overview(request):
 #     times = generate_timetable(10.00,20.00,2)
 #     return render(request, 'orders/timetable.html', {'timetable': times, 'actual_time': datetime.now().time()})
 
+def order (request):
+    #wyczyść danie i wszystkie cache a na
+    #dodaj zamowienie do widoku zamowien w panelu administratora
 
+    return render(request, 'orders/order.html')
 

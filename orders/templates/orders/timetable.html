@@ -1,19 +1,18 @@
-
-    {% if timetable %}
+{% if timetable %}
 
     <h3>Actual time: {{ actual_time }}</h3>
 
 
     {{ log }}
     <h2>Choose delivery time</h2>
-    <form action="{% url 'orders:overview'%}" method="post">
-    {% csrf_token %}
-    <ul>
+    <form action="{% url 'orders:overview' %}" method="post">
+        {% csrf_token %}
+        <ul>
             {% for time in timetable %}
-                <li><input type="submit" name='timee' value="{{ time.time }}" /></li>
-{#                <li><a href={% url 'orders:overview' time.time %}>{{time.time}}</a> {{time.time}}</li>#}
+                <li><input type="submit" name='timee' value="{{ time.time }}"/></li>
+                {#                <li><a href={% url 'orders:overview' time.time %}>{{time.time}}</a> {{time.time}}</li>#}
             {% endfor %}
-    </ul>
+        </ul>
     </form>
 {% else %}
     <h3>No times available</h3>

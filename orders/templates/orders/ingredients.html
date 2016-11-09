@@ -1,20 +1,31 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'orders/style.css' %}"/>
+<h1>{{ sauce  }} {{ pasta }}</h1>
+<body>
 {% if all_ingredients %}
     <h2> Choose ingredients. Two of them are included in price</h2>
 
-    <form action="{% url 'orders:addingredients'%}" method="post">
+    <form action="{% url 'orders:addingredients' %}" method="post">
         {% csrf_token %}
         {% for ingredient in all_ingredients %}
-        <ul>
-            <li>
-                <input type="checkbox" name="ingredient"
-               id="ingredient{{ forloop.counter }}"
-               value="{{ ingredient.price}}" />
-                <label for="ingredient{{ forloop.counter }}">{{ ingredient.name }} {{ ingredient.price }}</label>
-            </li>
-        </ul>
+            <ul>
+                <li>
+                    <input type="checkbox" name="ingredient"
+                           id="ingredient{{ forloop.counter }}"
+                           value="{{ ingredient.price }}"/>
+                    <label for="ingredient{{ forloop.counter }}">{{ ingredient.name }} {{ ingredient.price }}</label>
+                </li>
+            </ul>
         {% endfor %}
-    <input type="submit" value="Select delivery hour" />
+        <input type="submit" value="Select delivery hour"/>
+
+        <form action="{% url 'orders:pasta' %}" method="post">
+            {% csrf_token %}
+
+            <div class="myButton"><input type="submit" name="" value=""/></div>
+
+        </form>
     </form>
 
-
+    </body>
 {% endif %}

@@ -5,6 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>To jest czas twojego zamowienia {{ del_time }}</h1>
+<h1>To jest czas twojego zamowienia {{ del_time }}</h1>
+<h2>As to sa wszyzstkie dane dotyczące twojego zamówienia</h2>
+
+<form action="{% url 'orders:order' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Make order"/>
+</form>
 </body>
 </html>

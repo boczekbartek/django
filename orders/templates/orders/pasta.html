@@ -1,18 +1,30 @@
 {% load static %}
-{% if all_pastas %}
-    <ul>
-    <h2>Choose your pasta</h2>
-        {% for pasta in all_pastas %}
-        <li>
-            <a href={% url "orders:ingredients" %}> {{ pasta.type }}</a>
+<link rel="stylesheet" type="text/css" href="{% static 'orders/style.css' %}"/>
 
-            {{ pasta.price }}
-        </li>
+<h1>{{ sauce }}</h1>
+
+{% if all_pastas %}
+
+        <h2>Choose your pasta</h2>
+    <form action="{% url 'orders:ingredients'%}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="choosed_sauce" value="{{ sauce }}">
+        <ul>
+        {% for pasta in all_pastas %}
+            <li>
+            <div class = "square">
+               <div class="{{ pasta.type }}"><input type="submit" name="choosed_pasta" value=" {{pasta.type }}"/></div>
+            </div>
+                {{ pasta.price }}
+
+            </li>
         {% endfor %}
     </ul>
-    <form action="{% url 'orders:sauce'%}" method="post">
-    {% csrf_token %}
-         <input type="submit" value="Change sauce" />
+    </form>
+
+    <form action="{% url 'orders:sauce' %}" method="post">
+        {% csrf_token %}
+
     </form>
 {% else %}
     <h3>No pastas available yet</h3>

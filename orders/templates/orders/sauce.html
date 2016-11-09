@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sauce</title>
+</head>
+<body>
+    {% if all_sauces %}
+    <ul>
+    <h2>Choose your sauce</h2>
+        {% for sauce in all_sauces %}
+        <li>
+            <a href={% url 'orders:pasta'%}>
+                {{ sauce.name }}
+                <img src={{ img }}>
+
+            </a>
+            {{ sauce.price }}
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>No sauces available yet</h3>
+{% endif %}
+</body>
+</html>

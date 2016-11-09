@@ -1,0 +1,20 @@
+{% if all_ingredients %}
+    <h2> Choose ingredients. Two of them are included in price</h2>
+
+    <form action="{% url 'orders:addingredients'%}" method="post">
+        {% csrf_token %}
+        {% for ingredient in all_ingredients %}
+        <ul>
+            <li>
+                <input type="checkbox" name="ingredient"
+               id="ingredient{{ forloop.counter }}"
+               value="{{ ingredient.price}}" />
+                <label for="ingredient{{ forloop.counter }}">{{ ingredient.name }} {{ ingredient.price }}</label>
+            </li>
+        </ul>
+        {% endfor %}
+    <input type="submit" value="Select delivery hour" />
+    </form>
+
+
+{% endif %}

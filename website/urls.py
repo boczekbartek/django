@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^orders/', include('orders.urls')),
     # url(r'^timetable', views.timetable, name='timetable'),
     url(r'^', include('orders.urls')),
+    url(r'^feedme/',include('feedme.urls'))
     #url(r'^timetable/', views.timetable, name="timetable"),
     #jesli wejdziemy na strone glowna to przekieruje nas do sekcji orders
 ]

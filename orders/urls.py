@@ -6,8 +6,8 @@ app_name = 'orders'
 urlpatterns = [
     # /orders/
     url(r'^$', views.sauce, name='sauce'),
-    url(r'^sauce/$', views.sauce, name = 'sauce'),
-    url(r'^pasta/$', views.pasta, name = 'pasta'),
+    url(r'^sauce/$', views.SauceView.as_view(), name = 'sauce'),
+    url(r'^pasta/$', views.PastaView.as_view(), name = 'pasta'),
     url(r'^ingredients/$', views.ingredients, name = 'ingredients'),
     url(r'^addingredients/$', views.add_ingredients, name = 'addingredients'),
     url(r'^overview/$', views.overview , name='overview'),

@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
+    'orders.apps.FeedmeConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes', #framework for content types
